@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './style.css';
 import { set_data } from '../../store/action';
-import { Facebook_login } from '../../store/action';
+import { FacebookLogin } from '../../store/action';
 import { ChatApp } from '../chatAPP';
 
 // import { useNavigate } from 'react-router-dom';
@@ -31,9 +31,12 @@ class Home extends Component {
                     </button>
                     <br /> <br />
                     <br></br>
-                    <button onClick={Facebook_login}>
+                    {/* <button onClick={Facebook_login}>
                         Login with facebook
-                    </button>
+                    </button> */}
+
+                    <FacebookLogin />
+
                     <br></br>
                     <br></br>
                     <button onClick={ChatApp}>Chat app</button>
