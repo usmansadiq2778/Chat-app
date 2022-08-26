@@ -5,19 +5,9 @@ import { connect } from 'react-redux';
 import './style.css';
 import { set_data } from '../../store/action';
 import { Facebook_login } from '../../store/action';
-import { ChatApp } from '../chatAPP';
-
-// import { useNavigate } from 'react-router-dom';
 
 class Home extends Component {
-    // eslint-disable-next-line no-useless-constructor
-    // constructor(props) {
-    //     super(props);
-    // }
-    // state = { user: null, error: null };
     render() {
-        // let navigate = useNavigate();
-
         let user = { mail: 'bilalsadiq@gamil.com', name: 'kaleem jutt' };
         // console.log('Home ,props =>', this.props);
         return (
@@ -31,12 +21,9 @@ class Home extends Component {
                     </button>
                     <br /> <br />
                     <br></br>
-                    <button onClick={Facebook_login}>
-                        Login with facebook
-                    </button>
+                    <Facebook_login />
                     <br></br>
                     <br></br>
-                    <button onClick={ChatApp}>Chat app</button>
                 </>
             </div>
         );
@@ -49,6 +36,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     set_data: () => dispatch(set_data()),
+    Facebook_login: () => dispatch(Facebook_login()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 // export { Home };

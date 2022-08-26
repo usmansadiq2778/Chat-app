@@ -1,34 +1,24 @@
-/* eslint-disable no-useless-constructor */
-import React, { Component, useState } from 'react';
-// import * as React from 'react';
 import firebase from '../../config/firebase';
-
-import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
-import getdatabase from '../../config/firebase';
 import { ref, set, getDatabase } from 'firebase/database';
 import { getAuth, signInWithPopup, FacebookAuthProvider } from 'firebase/auth';
+// import getdatabase from '../../config/firebase';
 
 function Facebook_login() {
-    // is ma error a rha ha jab ma useNavigate use krta hu to
     const navigate = useNavigate();
-    //                    //          //                //
-    const provider = new FacebookAuthProvider();
     const auth = getAuth();
-    // let { user, error } = this.state;
+    const provider = new FacebookAuthProvider();
+    //                    //          //                //
 
-    return (
-        //   console.log('chl rha ha');
-
+    const handleFacebookLogin = () => {
         signInWithPopup(auth, provider)
-            .then((result) => {
+            .then((response) => {
                 // The signed-in user info.
-                const user = result.user;
+                const user = response.user;
 
                 // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-                console.log('users data =>', user);
-                let craete_data = {
+                console.log('Users Data => ', user);
+                let create_data = {
                     Name: user.displayName,
                     image: user.photoURL,
                     uid: user.uid,
@@ -37,23 +27,26 @@ function Facebook_login() {
                 // firebase data data push in firebase using navigate
                 const db = getDatabase();
                 set(ref(db, `users / ${user.uid} `), {
-                    craete_data,
+                    create_data,
                 }).then(() => {
-                    Navigate('/chatapp');
+                    navigate('/chatapp');
                     alert('successfully upload data');
                 });
-
                 // ...
             })
             .catch((error) => {
                 // Handle Errors here.
                 const errorMessage = error.message;
                 console.log(errorMessage);
-
                 // ...
-            })
+            });
+    };
+
+    return (
+        <>
+            <button onClick={handleFacebookLogin}>Login with Facebook</button>
+        </>
     );
-    // }
 }
 // setTimeout(Facebook_login, 5000);
 const set_data = () => {
@@ -81,3 +74,4 @@ const set_data = () => {
 };
 
 export { set_data, Facebook_login };
+// { set_data, Facebook_login };
