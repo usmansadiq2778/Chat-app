@@ -1,24 +1,27 @@
 const initial_state = {
-    users: [
-        {
-            name: 'usman sadiq',
-            mail: 'mianusman2488@gmail.com',
-        },
-        {
-            name: 'bilal sadiq',
-            mail: 'blalsadiq@gmail.com',
-        },
-    ],
+    users: [],
+    // {
+    //     name: 'usman sadiq',
+    //     mail: 'mianusman2488@gmail.com',
+    // },
+    // {
+    //     name: 'bilal sadiq',
+    //     mail: 'blalsadiq@gmail.com',
+    // },
+    current_user: {},
 };
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initial_state, action) => {
-    // eslint-disable-next-line default-case
-    console.log('action ma data mil tha ha', action);
     switch (action.type) {
-        case 'set_data':
+        // case 'set_data':
+        //     return {
+        //         ...state,
+        //         users: [...state.users, action.payloaduser],
+        //     };
+        case 'SETUSER':
             return {
                 ...state,
-                users: [...state.users, action.user],
+                current_user: action.payload,
             };
 
         default:
