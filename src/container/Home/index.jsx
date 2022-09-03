@@ -9,7 +9,9 @@ import { Facebook_login } from '../../store/action';
 class Home extends Component {
     render() {
         let user = { mail: 'bilalsadiq@gamil.com', name: 'kaleem jutt' };
-        // console.log('Home ,props =>', this.props);
+        console.log('Home ,props =>', this.props);
+
+        const users = this.props;
         return (
             //
             // eslint-disable-next-line react/jsx-no-comment-textnodes
@@ -19,6 +21,7 @@ class Home extends Component {
                     <button onClick={() => this.props.set_data()}>
                         set data
                     </button>
+                    <h2>Email: {users[users[1]]}</h2>
                     <br /> <br />
                     <br></br>
                     <Facebook_login />

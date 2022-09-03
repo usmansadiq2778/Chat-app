@@ -1,0 +1,11 @@
+.Avatar{
+/* width: 300px;
+height: 300; */
+}
+.Avatar :checked{
+    width: 300px;
+height: 300;
+}
+.Chatapp{
+    /* background-color: blue; */
+}

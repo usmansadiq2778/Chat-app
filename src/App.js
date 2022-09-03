@@ -4,8 +4,6 @@ import { Routers } from './config/router';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import { ChatApp } from './container/chatAPP';
-
 class App extends React.Component {
     render() {
         return (
